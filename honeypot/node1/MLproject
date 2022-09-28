@@ -1,0 +1,8 @@
+name: honeypot-example-node1
+
+docker_env:
+  image:  honeypot-env
+
+entry_points:
+  main:
+    command: "python3 honeypot.py"
