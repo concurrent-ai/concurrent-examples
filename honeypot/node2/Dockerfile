@@ -1,8 +1,8 @@
 FROM python:3.7
 
 RUN apt install -y curl
-RUN pip install mlflow>=1.0 \
-    && pip install azure-storage-blob==12.3.0 \
+RUN pip install mlflow>=1.0
+RUN pip install azure-storage-blob==12.3.0 \
     && pip install numpy==1.21.2 \
     && pip install scipy \
     && pip install pandas==1.3.3 \
