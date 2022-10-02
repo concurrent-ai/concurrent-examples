@@ -28,9 +28,9 @@ for one_local_path in lp:
             print(json.dumps(jsn))
             for key, val in jsn:
                 if key in summation:
-                    summation['key'] = summation['key'] + val
+                    summation[key] = summation[key] + val
                 else:
-                    summation['key'] = val
+                    summation[key] = val
     except Exception as ex:
         print('Caught ' + str(ex) + ' while processing ' + str(one_local_path), flush=True)
 
