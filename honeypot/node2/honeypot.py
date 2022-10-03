@@ -26,7 +26,7 @@ for one_local_path in lp:
         with open(one_local_path, 'r') as f:
             jsn = json.load(f)
             print(json.dumps(jsn))
-            for key, val in jsn.iteritems():
+            for key, val in jsn.items():
                 print('key=' + str(key) + ', val=' + str(val))
                 if key in summation:
                     print('Already present. key=' + str(key) + ', existing val=' + str(summation[key]))
