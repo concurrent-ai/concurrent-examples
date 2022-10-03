@@ -27,10 +27,14 @@ for one_local_path in lp:
             jsn = json.load(f)
             print(json.dumps(jsn))
             for key, val in jsn:
+                print('key=' + str(key) + ', val=' + str(val))
                 if key in summation:
+                    print('Already present. key=' + str(key) + ', existing val=' + str(summation[key]))
                     summation[key] = summation[key] + val
                 else:
+                    print('Not present. key=' + str(key))
                     summation[key] = val
+                print('summation_interim=' + str(summation), flush=True)
     except Exception as ex:
         print('Caught ' + str(ex) + ' while processing ' + str(one_local_path), flush=True)
 
