@@ -1,0 +1,16 @@
+name: docker-example
+
+docker_env:
+  image:  concurrent-example-run-command
+
+entry_points:
+  main:
+    parameters:
+      command: {type: string}
+      arg1: {type: string, default: no-arg}
+      arg2: {type: string, default: no-arg}
+      arg3: {type: string, default: no-arg}
+      arg4: {type: string, default: no-arg}
+      arg5: {type: string, default: no-arg}
+    command: |
+        bash run-command.sh {command} {arg1} {arg2} {arg3} {arg4} {arg5}
