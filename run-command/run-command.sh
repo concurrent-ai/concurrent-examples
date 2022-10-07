@@ -9,3 +9,4 @@ do
 done
 
 "${args[@]}"
+exit $?
