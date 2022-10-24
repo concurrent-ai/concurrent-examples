@@ -11,11 +11,7 @@ import pygeoip
 
 print('honeypot: Entered', flush=True)
 df = concurrent_core.list(None)
-
-print('Column Names:', flush=True)
-cn = df.columns.values.tolist()
-print(str(cn))
-
+print('Before Local paths=' + str(lp))
 lp = concurrent_core.get_local_paths(df)
 print('Local paths=' + str(lp))
 
