@@ -13,6 +13,7 @@ import time
 
 tracemalloc_last = time.time_ns()
 def periodic_tracemalloc_dump(pfx):
+    global tracemalloc_last
     if (tracemalloc_last + (15 * 1000000000)) < time.time_ns():
         tracemalloc_last = time.time_ns()
         snapshot = tracemalloc.take_snapshot()
