@@ -11,18 +11,27 @@ import pygeoip
 import tracemalloc
 import time
 
-tracemalloc_last = time.time_ns()
+tracemalloc_last_time = time.time_ns()
+tracemalloc_last = None
+
 def periodic_tracemalloc_dump(pfx):
     global tracemalloc_last
-    if (tracemalloc_last + (15 * 1000000000)) < time.time_ns():
-        tracemalloc_last = time.time_ns()
+    global tracemalloc_last_time
+    if (tracemalloc_last_time + (3 * 1000000000)) < time.time_ns():
+        tracemalloc_last_time = time.time_ns()
         snapshot = tracemalloc.take_snapshot()
         top_stats = snapshot.statistics('lineno')
         print(pfx + ": tracemalloc [ Top 20 ]", flush=True)
         for stat in top_stats[:20]:
             print(stat, flush=True)
+        if tracemalloc_last:
+            cmps = snapshot.compare_to(tracemalloc_last, 'lineno')
+            print(pfx + ": tracemalloc differences [ Top 20 ]", flush=True)
+            for stat in cmps[:20]:
+                print(stat, flush=True)
 
 print('honeypot: Entered', flush=True)
+tracemalloc.start()
 periodic_tracemalloc_dump('Program Start')
 df = concurrent_core.list(None)
 periodic_tracemalloc_dump('After concurrent_core.list')
