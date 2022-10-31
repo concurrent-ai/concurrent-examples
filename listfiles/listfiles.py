@@ -16,7 +16,7 @@ cn = df.columns.values.tolist()
 print(str(cn))
 
 lp = concurrent_core.get_local_paths(df)
-print('Concurrent Core Local paths:')
+print('Concurrent Core Local paths: num files=' + len(lp))
 for one_file in lp:
     print(str(one_file), flush=True)
 os._exit(os.EX_OK)
