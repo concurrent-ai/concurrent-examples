@@ -10,4 +10,4 @@ RUN pip install mlflow>=1.0 \
     && pip install cloudpickle \
     && pip install concurrent_plugin
 
-ARG CACHEBUST=4
+ARG CACHEBUST=5
