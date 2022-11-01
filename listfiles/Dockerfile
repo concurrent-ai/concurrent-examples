@@ -1,6 +1,7 @@
 FROM python:3.7
 
 RUN apt install -y curl
+ARG CACHEBUST=7
 RUN pip install mlflow>=1.0 \
     && pip install azure-storage-blob==12.3.0 \
     && pip install numpy==1.21.2 \
@@ -10,4 +11,3 @@ RUN pip install mlflow>=1.0 \
     && pip install cloudpickle \
     && pip install concurrent_plugin
 
-ARG CACHEBUST=6
