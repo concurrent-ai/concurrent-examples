@@ -1,7 +1,7 @@
 FROM python:3.7
 
 RUN apt install -y curl
-ARG CACHEBUST=7
+ARG CACHEBUST=8
 RUN pip install mlflow>=1.0 \
     && pip install azure-storage-blob==12.3.0 \
     && pip install numpy==1.21.2 \
