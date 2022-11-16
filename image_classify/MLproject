@@ -1,0 +1,8 @@
+name: bird-species
+
+docker_env:
+  image:  bird-species-image
+
+entry_points:
+  main:
+    command: "python xformcode.py"
