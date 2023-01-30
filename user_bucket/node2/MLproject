@@ -1,0 +1,8 @@
+name: input-to-output-artifacts
+
+docker_env:
+  image:  input-to-output-artifacts
+
+entry_points:
+  main:
+    command: "python3 input_artifacts_to_output_artifacts.py"
