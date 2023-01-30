@@ -11,6 +11,7 @@ from infinstor import infin_boto3
 import argparse
 import os
 import tempfile
+import mlflow
 
 from concurrent_plugin import concurrent_core
 
@@ -23,7 +24,7 @@ args:argparse.Namespace = argparser.parse_args()
 bucket:str = args.bucket
 prefix:str = args.prefix if args.prefix.endswith('/') else args.prefix + '/'
 
-# mlflow.start_run()
+#mlflow.start_run()
 s3:S3Client = boto3.client('s3')
 
 continuation_token = None
@@ -81,13 +82,15 @@ while True:
     
     for obj in lrv['Contents']:
         obj_key:str = obj['Key']
-        
+
         # download the object
-        local_fname = tempfile.gettempdir + "/" + obj_key.replace('/', '__')
+        local_fname:str = tempfile.gettempdir() + "/" + obj_key.replace('/', '__')
+        print(f"Downloading s3://{bucket}/{obj_key} to {local_fname}")
         s3.download_file(bucket, obj_key, local_fname)
         
         # copy the local file as an mlflow artificat
-        concurrent_core.concurrent_log_artifact(local_fname, "copy", obj_key=local_fname)
+        print(f"uploading {local_fname} as an artifact")
+        concurrent_core.concurrent_log_artifact(local_fname, "output", obj_key=local_fname)
         
         # delete the file
         os.unlink(local_fname)
