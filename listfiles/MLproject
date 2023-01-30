@@ -1,0 +1,8 @@
+name: listfiles-example
+
+docker_env:
+  image:  listfiles-env
+
+entry_points:
+  main:
+    command: "python3 listfiles.py"
