@@ -1,7 +1,7 @@
-name: bird-species
+name: image-classify
 
 docker_env:
-  image:  bird-species-image
+  image:  image-classify-image
 
 entry_points:
   main:
