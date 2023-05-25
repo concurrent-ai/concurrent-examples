@@ -1,0 +1,8 @@
+name: image-classify
+
+docker_env:
+  image:  image-classify-image
+
+entry_points:
+  main:
+    command: "python xformcode.py"

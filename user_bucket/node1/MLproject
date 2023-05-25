@@ -1,0 +1,11 @@
+name: user-bucket-to-artifact
+
+docker_env:
+  image:  user-bucket-to-artifact
+
+entry_points:
+  main:
+    parameters:
+      bucket: {type: string}
+      prefix: {type: string}
+    command: "python3 user_bucket_to_artifact.py --bucket={bucket} --prefix={prefix}"
